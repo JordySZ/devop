@@ -8,17 +8,15 @@ on:
 
 jobs:
   build:
-    name: Build Flutter app
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.29.3' # Usa la versión que tengas
+          flutter-version: '3.29.3'
 
       - name: Install dependencies
         run: flutter pub get
@@ -28,3 +26,6 @@ jobs:
 
       - name: Run tests
         run: flutter test
+
+      - name: Build APK
+        run: flutter build apk --debug
